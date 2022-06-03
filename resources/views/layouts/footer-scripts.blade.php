@@ -9,7 +9,6 @@
 
   <script src="{{asset('asset/js/jquery-3.2.1.min.js')}}"></script>
   <script src="{{asset('asset/js/popper.js')}}"></script>
-  {{-- <script src="{{asset('asset/js/bootstrap.min.js')}}"></script> --}}
   <script src="{{asset('asset/js/stellar.js')}}"></script>
   <script src="{{asset('asset/vendors/lightbox/simpleLightbox.min.js')}}"></script>
   <script src="{{asset('asset/vendors/nice-select/js/jquery.nice-select.min.js')}}"></script>

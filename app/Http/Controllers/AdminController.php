@@ -5,6 +5,7 @@ use Auth;
 use App\Models\product;
 use App\Models\type_product;
 use App\Models\order;
+use App\Models\order_details;
 use Illuminate\Http\Request;
 // use Illuminate\http\uploadedfile;
 use Illuminate\Support\Facades\Storage;
@@ -174,8 +175,16 @@ class AdminController extends Controller
     public function orderuser(){
 
 
-        $orders = order::all();
+        $orders = order_details::all();
+        // $t = order_details::all();
+        // ['','user_id','total','created_at','updated_at','status'];
+        // $order = order::select('id','order_numper','total','status')->with('order_details:id,qty')->get();
         // dd($orders);
+        // dd($t);
+        
+        
+        
+
         return view('admin.order_user',['orders'=>$orders]);
         
 

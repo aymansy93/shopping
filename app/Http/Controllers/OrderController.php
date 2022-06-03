@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\product;
 use App\Models\order;
+use App\Models\order_details;
+use App\Models\payments;
+
 use Carbon\Carbon;
 use Cart;
 use Auth;
@@ -58,16 +61,22 @@ class OrderController extends Controller
         $order_num = rand(1000, 745757);
         $order_numper = '#online'.str_pad($order_num + 1, 8, "0", STR_PAD_LEFT);
         // ++++++++++++++++++++++++++++++++++++++
-        
-        // validite 
+        // dd($request->all());
 
-        // +++++++++++++++++++++++++++++++++++++++
-        if($request->name === Auth()->user()->name && $request->email=== Auth()->user()->email){
-                                
-                                
-                if($request->selector == 'on'){
-                                        
-                     $products = Cart::content();
+        // validite 
+        $validator = $request->validate([
+            'cardname' => 'required',
+            'cardnumber' => 'required|max:16',
+            'cvv' => 'required|max:3',
+            'datecard' => 'required',
+        ],[
+            'cardname.required' => 'يرجى ادخال اسم البطاقة',
+            'cardnumber.required' =>'يرجى ادخال رقم بطاقة الدفع بشكل صحيح',
+            'cvv.required'=> 'يرجى ادخال رقم التحقق',
+            'datecard.required' => 'يرجى ادخال تاريخ بطاقة الدفع',
+        ]);
+        if($request->selector == 'on'){
+            $products = Cart::content();
                                             
                      foreach($products as $product){
                                                 
@@ -76,32 +85,38 @@ class OrderController extends Controller
                         'user_id' => Auth()->id(),
                         'total' => $request->total,
                         'created_at' => Carbon::now(),
-                        'order_name'=> $product->name,
-                        'qty' => $product->qty,
+                        ]);
+                        // 
+                        order_details::create([
+                            'product_name' => $product->name,
+                            'order_id' => $order->id,
+                            'qty' => $product->qty,
+                            'created_at' => Carbon::now(),
+
                         ]);
                         $pro = product::find($product->id);
                         $pro->order_id= $order->id;
                         $pro->quantity= $product->qty;
                         $pro->save();
                         Cart::destroy();
+                }
+                payments::create([
+                    'user_id' => Auth::user()->id,
+                    'name' => $request->cardname,
+                    'cardnumper'=>$request->cardnumber,
+                    'cvv'=>$request->cvv,
+                    'cartdate'=>$request->datecard,
+                    'total'=> $request->total,
+                ]);
 
-                                                
-                                                                        
-                    } 
+        }else{
+            return redirect()->back()->with('success', 'يرجى الموافقة على شروط الخصوصية');
 
-                    return redirect()->back()->with('success', 'تم طلب المنتج يمكنك التحقق من المشتريات في الملف الشخصي!');
+        }
+        
+                return redirect()->back()->with('success', 'تم طلب المنتج يمكنك التحقق من المشتريات في الملف الشخصي!');
 
 
-                    }else{
-                        return redirect()->back()->with('success', ' يرجى الموافقة على سياسة الخصوصية لدينا!');
-
-                    }
-
-            }else{
-                return redirect()->back()->with('success', 'يرجى كتابة اسمك والبريد الالكتروني المسجل لدينا!');
-            }
-
-                        
-                        
+        // ++++++++++++++++++++++++++++++++++++++              
         }
 }

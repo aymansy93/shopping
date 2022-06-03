@@ -20,24 +20,24 @@
                     @foreach ( $orders as $order  )
             
                                         <tr>
-                                        <th scope="row">{{$order->order_numper}}</th>
-                                        <td>{{$order->order_name}}</td>
+                                        <th scope="row">{{$order->order->order_numper}}</th>
+                                        <td>{{$order->product_name}}</td>
                                         <td>{{$order->qty}}</td>
-                                        <td>{{$order->total}}</td>
-                                        @if ($order->status == 'تتم مراجعة الطلب')
-                                        <td class="bg-secondary">{{$order->status}}</td>
+                                        <td>{{$order->order->total}}</td>
+                                        @if ($order->order->status == 'تتم مراجعة الطلب')
+                                        <td class="bg-secondary">{{$order->order->status}}</td>
                                         @endif
-                                        @if ($order->status == 'قبول')
-                                        <td class="bg-primary">{{$order->status}}</td>
+                                        @if ($order->order->status == 'قبول')
+                                        <td class="bg-primary">{{$order->order->status}}</td>
                                         @endif
-                                        @if ($order->status == 'رفض')
-                                        <td class="bg-danger">{{$order->status}}</td>
+                                        @if ($order->order->status == 'رفض')
+                                        <td class="bg-danger">{{$order->order->status}}</td>
                                         @endif
-                                        @if ($order->status == 'اتمام')
-                                        <td class="p-3 bg-success">{{$order->status}}</td>
+                                        @if ($order->order->status == 'اتمام')
+                                        <td class="p-3 bg-success">{{$order->order->status}}</td>
                                         @endif
                                         <td>{{$order->created_at}}</td>
-                                        <td><form method="post" action="/admin/changestatus/{{$order->id}}">
+                                        <td><form method="post" action="/admin/changestatus/{{$order->order->id}}">
             
                                             {{csrf_field()}}
                                                 <td><input class="btn btn-primary" name="status" type="submit" value="قبول"></td>
