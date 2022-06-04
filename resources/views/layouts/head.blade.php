@@ -5,7 +5,7 @@
 
  <!-- Bootstrap CSS -->
  {{-- <link rel="stylesheet"  href="{{asset('asset/css/bootstrap.css')}}" /> --}}
-
+ <meta name="csrf-token" content="{{ csrf_token() }}">
  <link rel="stylesheet" href="{{asset('asset/vendors/linericon/style.css')}}" />
  <link rel="stylesheet" href="{{asset('asset/css/font-awesome.min.css')}}" />
  <link rel="stylesheet" href="{{asset('asset/css/themify-icons.css')}}" />
