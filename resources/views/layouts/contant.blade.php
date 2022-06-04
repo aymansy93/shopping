@@ -18,23 +18,30 @@
       </div>
 
 
-
       <div class="row">
+        
 
         @foreach ($products as $product)
         <div class="col-lg-4 col-md-6" id="pro">
           <div class="single-product">
             <div class="product-img">
                 {{-- {{asset('asset/img/product/feature-product/f-p-1.jpg')}} --}}
-              <img class="img-fluid w-100" src="http://127.0.0.1:8000/storage/product/{{$product->type_products}}/{{$product->image_path}}" alt="{{$product->image_path}}" />
+              <img class="img-fluid w-100" src="{{route('products') . "/storage/product/$product->type_products" . "/" . $product->image_path }}" alt="{{$product->image_path}}" />
               <div class="p_icon">
-                <a href="/{{$product->id}}">
+                <a href="/{{$product->id}}" class="text-decoration-none">
                   <i class="ti-eye"></i>
                 </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
+                
+                
+                <a href="{{route('like',[$product->id])}}" class="text-decoration-none">
+                  <i class='bx bxs-heart bx-rotate-90 bx-tada' style='color:#d40c72'>2</i>
                 </a>
-                <a href="{{route('add.to.cart',[$product->id])}}">
+                <a href="{{route('dislike',[$product->id])}}" class="text-decoration-none">
+                  <i class='bx bx-heart bx-flip-horizontal' style='color:rgba(12,10,11,0.94)' >0</i>
+                </a>
+                  
+                  
+                <a href="{{route('add.to.cart',[$product->id])}}" class="text-decoration-none">
                   <i class="ti-shopping-cart"></i>
                 </a>
               </div>

@@ -24,7 +24,17 @@ Auth::routes();
 //         return Response::download($path);
 //     }
 // });
+
+
+// like route 
+
+Route::get('like/{id}','App\Http\Controllers\likecontroller@like')->name('like');
+Route::get('dislike/{id}','App\Http\Controllers\likecontroller@dis_like')->name('dislike');
+
+// 
+
 // route for admin controller 
+
 Route::get('admin/user_order', "App\Http\Controllers\AdminController@orderuser")->name('admin.order');
 Route::post('admin/changestatus/{id}', "App\Http\Controllers\AdminController@changestatus")->name('admin.changestatus');
 

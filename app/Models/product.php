@@ -36,6 +36,15 @@ class product extends Model
     {
         return $this->hasMany(product::class, 'product_name', 'name')->get();
     }
+    public function likes()
+    {
+        return $this->hasMany(likes::class, 'product_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(comments::class, 'product_id', 'id');
+    }
 
 
 }

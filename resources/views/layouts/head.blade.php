@@ -9,6 +9,7 @@
  <link rel="stylesheet" href="{{asset('asset/vendors/linericon/style.css')}}" />
  <link rel="stylesheet" href="{{asset('asset/css/font-awesome.min.css')}}" />
  <link rel="stylesheet" href="{{asset('asset/css/themify-icons.css')}}" />
+ <link href="{{asset('asset/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
  <link rel="stylesheet" href="{{asset('asset/css/flaticon.css')}}" />
  <link rel="stylesheet" href="{{asset('asset/vendors/owl-carousel/owl.carousel.min.css')}}" />
  <link rel="stylesheet" href="{{asset('asset/vendors/lightbox/simpleLightbox.css')}}" />

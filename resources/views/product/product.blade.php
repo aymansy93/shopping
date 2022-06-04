@@ -19,7 +19,7 @@
                 class="carousel slide"
                 data-ride="carousel"
               >
-              <img src="http://127.0.0.1:8000/storage/product/{{$product->type_products}}/{{$product->image_path}}"
+              <img src="{{route('products') . "/storage/product/$product->type_products" . "/" . $product->image_path }}" alt="{{$product->image_path}}"
                 alt=""/>
               </div>
             </div>

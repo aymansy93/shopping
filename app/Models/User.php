@@ -60,5 +60,14 @@ class User extends Authenticatable
         return $this->hasMany(payments::class,'user_id','id');
 
     }
+    public function likes()
+    {
+        return $this->hasMany(likes::class, 'user_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(comments::class, 'user_id', 'id');
+    }
 
 }
