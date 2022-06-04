@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "start": "node index.js",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
         "development": "mix",
         "watch": "mix watch",
