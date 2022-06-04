@@ -32,7 +32,6 @@
                   <i class="ti-eye"></i>
                 </a>
                 
-                
                 <a href="{{route('like',[$product->id])}}" class="text-decoration-none">
                   <i class='bx bxs-heart bx-rotate-90 bx-tada' style='color:#d40c72'>2</i>
                 </a>
