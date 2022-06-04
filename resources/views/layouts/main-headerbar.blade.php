@@ -65,8 +65,9 @@
                             </ul>
                         </div>
 
-                        <form class="d-flex p-4">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <form action="{{route('search')}}" method="get" class="d-flex p-4">
+                            @csrf
+                            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>

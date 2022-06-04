@@ -45,6 +45,25 @@ class ProductController extends Controller
         return view('product.product',['product'=>$product]);
     }
 
+    public function search(Request $request){
+
+        // if(empty($request->all())){
+        //     dd('1');
+        // }else{
+        //     dd('2');
+        // }
+        $res= product::where('name','LIKE','%'. $request->q . '%')
+                    ->orwhere('title','LIKE','%'. $request->q . '%')->get();
+
+
+        // dd($res);
+
+        return view('product.search',['products'=>$res]);
+
+
+
+
+    }
 
 
 

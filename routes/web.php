@@ -58,6 +58,7 @@ Route::get('add-to-cart/{id}', 'App\Http\Controllers\OrderController@addToCart')
 Route::get('/cart', 'App\Http\Controllers\OrderController@index')->name('products.cart');
 Route::get('/', 'App\Http\Controllers\ProductController@index')->name('products');
 Route::get('/{id}', 'App\Http\Controllers\ProductController@show')->name('products.show');
+Route::get('product/search','App\Http\Controllers\ProductController@search')->name('search');
 
 // =======================================================================================================
 
