@@ -6,6 +6,7 @@
 @endif
 @section('index')
     <div class="col-md-12">
+        
         <table class="table table-dark table-striped">
             <thead>
                 <tr>

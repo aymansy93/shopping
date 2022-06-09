@@ -14,23 +14,14 @@ use App\Http\Controllers\AdminController;
 |
 */
 Auth::routes();
-// Route::get('/', function () {
-//     return view('home');
-// });
-// Route::get('files/{file_name}', function($file_name = null)
-// {
-//     $path = storage_path().'/'.'app'.'/images/products'.$file_name;
-//     if (file_exists($path)) {
-//         return Response::download($path);
-//     }
-// });
 
+
+Route::post('/{id}/comment', 'App\Http\Controllers\ProductController@commentadd')->name('comment')->middleware('auth');
 
 // like route 
 
-Route::get('like/{id}','App\Http\Controllers\likecontroller@like')->name('like');
-Route::get('dislike/{id}','App\Http\Controllers\likecontroller@dis_like')->name('dislike');
-
+Route::get('like/{id}','App\Http\Controllers\ProductController@like')->name('like')->middleware('auth');
+Route::get('dislike/{id}','App\Http\Controllers\ProductController@dis_like')->name('dislike')->middleware('auth');
 // 
 
 // route for admin controller 
@@ -45,7 +36,15 @@ Route::post('/admin/type-product', 'App\Http\Controllers\TypeProductController@s
 Route::resource('/admin', AdminController::class);
 // ===============================================================================
 // route for cart & product & checkout
+Route::get('profil/addnew','App\Http\Controllers\ProfilController@new')->name('new.profil');
+Route::post('profil/addnew','App\Http\Controllers\ProfilController@new_store')->name('new.store.profil');
+
+Route::put('profil/setting','App\Http\Controllers\ProfilController@update')->name('update.profil');
+
+Route::get('profil/setting','App\Http\Controllers\ProfilController@setting')->name('setting');
+
 Route::get('profil/order','App\Http\Controllers\ProfilController@myorder')->name('myorder');
+Route::delete('profil/{id}/order/','App\Http\Controllers\ProfilController@destroy')->name('order.delete');
 
 Route::get('profil','App\Http\Controllers\ProfilController@index')->name('profil');
 Route::get('checkout','App\Http\Controllers\OrderController@checkout')->name('checkout');
@@ -70,7 +69,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/test', function(){
-//     $a = App\Models\User::where('ayman');
-//     dd($a);
-// });

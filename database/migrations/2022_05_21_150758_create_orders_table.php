@@ -17,8 +17,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('order_numper');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('total');
+            $table->string('status')->default('تتم مراجعة الطلب');
             $table->timestamps();
         });
     }

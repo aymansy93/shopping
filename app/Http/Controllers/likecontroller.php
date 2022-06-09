@@ -11,19 +11,25 @@ use Illuminate\Http\Request;
 class likecontroller extends Controller
 {
     //
+    public function index(){
+        // test
+
+    }
     public function like($id){
+         
+
+
         
-        $like = likes::with('user')->where('user_id',Auth::user()->id)->get();
-        $l = likes::all(); 
-        // return view('home',['likes'=>$l]);       
-        // dd($l);
-        likes::create([
-            'user_id' => Auth::user()->id,
-            'product_id'=>$id,
-            'like' => 1
-        ]);
+        // $like = 0;
+        // if(likes::){
+
+        // }
+        // $like = likes::with('product')->get();
         
-        return redirect()->back();
+
+        // // return view('home');       
+        // dd($like);
+        // 
 
 
     }

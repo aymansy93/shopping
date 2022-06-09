@@ -1,5 +1,6 @@
 <div class="container-md">
-    <div class="col-12">
+    
+    <div class="col-8">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -33,5 +34,4 @@
             </button>
         </div>
     </div>
-
 </div>

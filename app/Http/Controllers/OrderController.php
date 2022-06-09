@@ -72,7 +72,8 @@ class OrderController extends Controller
         ],[
             'cardname.required' => 'يرجى ادخال اسم البطاقة',
             'cardnumber.required' =>'يرجى ادخال رقم بطاقة الدفع بشكل صحيح',
-            'cvv.required'=> 'يرجى ادخال رقم التحقق',
+            'cvv.required'=>  'يرجى ادخال رقم التحقق',
+            'cvv.numeric' => 'يجب ان يكون رقم',
             'datecard.required' => 'يرجى ادخال تاريخ بطاقة الدفع',
         ]);
         if($request->selector == 'on'){

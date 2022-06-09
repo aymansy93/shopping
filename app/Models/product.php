@@ -29,12 +29,12 @@ class product extends Model
 
     public function type_product()
     {
-        return $this->belongsTo(type_product::class, 'type_products', 'id')-get();
+        return $this->belongsTo(type_product::class, 'type_products', 'id');
     }
 
     public function order_details()
     {
-        return $this->hasMany(product::class, 'product_name', 'name')->get();
+        return $this->hasMany(product::class, 'product_name', 'name');
     }
     public function likes()
     {

@@ -18,9 +18,9 @@ class OrderDetails extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->string('product_name');
-            $table->foreign('product_name')->references('name')->on('products');
+            $table->foreign('product_name')->references('name')->on('products')->onDelete('cascade');
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->string('qty');
             $table->timestamps();
         });

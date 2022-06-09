@@ -43,7 +43,7 @@
                     </div>
                 @endforeach
             @else
-                    <img src="{{asset('images/search.png')}}" height="350px" alt="">
+                    <img src="{{asset('images/search.png')}}" height="300px" width="300px" alt="">
                     <h3 class="alert alert-info">لايوجد منتجات بهذا الاسم </h3>
                     <a class="text-decoration-none fs-3 text" href="{{route('products')}}">يمكنك العثور على منتجات اخرى من هنا</a>
             @endif
