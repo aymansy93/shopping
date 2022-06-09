@@ -6,6 +6,7 @@ use App\Models\profil;
 use App\Models\User;
 use App\Models\order_details;
 use DB;
+use File;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -55,10 +56,10 @@ class ProfilController extends Controller
         return view('profil.setting',compact('profil'));
     }
     public function new(){
-        $user_id = Auth::user()->id;
-        $profil = profil::find($user_id);
-        if(!$profil){
-
+        
+        if(Auth::user()->profil){
+            return view('profil.setting');
+        }else{
             return view('profil.newprofil');
         }
 
@@ -117,44 +118,24 @@ class ProfilController extends Controller
             $user->update([
                 'name'=> $request->name,
             ]);
-
-            if($request->image){
-
-                
-
-                $img_ex = $request->image->getClientOriginalExtension();
-                $img_name = time() . '.'. $img_ex;
-                $path = "storage/profil";
-                $request->image ->move(public_path($path),$img_name);
-
-                $profil = profil::find($user->profil->id);
-                $profil->profil_photo = "storage/profil/" . $img_name; 
-                $profil->title = $request->title;
+            $profil = profil::find($user->profil->id);
+            $profil->title = $request->title;
+            
+                if($request->hasFile('image')){
+                    $img = $profil->profil_photo;
+                    File::delete($img);
+                    $img_ex = $request->image->getClientOriginalExtension();
+                    $img_name = time() . '.'. $img_ex;
+                    $path = "storage/profil";
+                    $request->image ->move(public_path($path),$img_name);
+                    $profil->profil_photo = "storage/profil/" . $img_name; 
+                    
+                }
+        
                 $profil->save();
-
-
-            }else{
-
-                $profil = profil::find($user->profil->id);
-                $profil->title = $request->title;
-                $profil->save();
-            }
-        
-
-        
-
-       
-
-        
-        
-        
-        // $profil->username = Auth::user()->profil->username;
-        // $profil->user_id = Auth::user()->id;
-        // $profil->profil_photo = "storage/profil/" . $img_name;
-        // $profil->title = $request->title;
-        // $profil->save();
+        }
 
         return redirect()->back()->with('status','تم تحديث بيانات الملف الشخصي');
         }
     }
-}
+
