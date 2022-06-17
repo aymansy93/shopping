@@ -64,7 +64,7 @@ class ProductController extends Controller
     }
 
     public function search(Request $request){
-
+        // dd($request);
         if(!empty($request->q)){
             $res= product::where('name','LIKE','%'. $request->q . '%')
             ->orwhere('title','LIKE','%'. $request->q . '%')->get();
@@ -88,6 +88,8 @@ class ProductController extends Controller
     // ////////////////////////////////////////////////////////////
 
     public function like(Request $request,$id){
+        
+        
 
         $product = product::find($id);
         // dd();

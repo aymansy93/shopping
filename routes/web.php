@@ -44,7 +44,6 @@ Route::put('profil/setting','App\Http\Controllers\ProfilController@update')->nam
 Route::get('profil/setting','App\Http\Controllers\ProfilController@setting')->name('setting')->middleware('checknewuser');
 
 Route::get('profil/order','App\Http\Controllers\ProfilController@myorder')->name('myorder')->middleware('checknewuser');
-Route::delete('profil/{id}/order/','App\Http\Controllers\ProfilController@destroy')->name('order.delete')->middleware('checknewuser');
 
 Route::get('profil','App\Http\Controllers\ProfilController@index')->name('profil')->middleware('checknewuser');
 Route::get('checkout','App\Http\Controllers\OrderController@checkout')->name('checkout');

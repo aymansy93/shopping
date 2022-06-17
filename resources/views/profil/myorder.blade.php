@@ -46,11 +46,7 @@
                                     <td class="p-3 bg-success">{{ $order->status }}</td>
                                 @endif
                                 <td>
-                                    <form method="post" action="/profil/{{ $order->id }}/order">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <input class="btn btn-primary" type="submit" value="Delete">
-                                    </form>
+                                    
                                 </td>
                             </tr>
                         @endforeach

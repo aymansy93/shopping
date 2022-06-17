@@ -29,21 +29,6 @@ class ProfilController extends Controller
         // dd($order);
         return view('profil.myorder',['orders'=> $order]);
     }
-    public function destroy($id){
-        
-        $order = order::find($id);
-        if($order->status == 'قبول'){
-            return redirect()->back()->with('status','عذرا لقد تم قبول طلبك وهو الان في مرحلة الشحن!');
-            }else{
-                $order->order_details()->delete();
-                $order->delete();
-                return redirect()->back()->with('status','تم الحذف من القائمة بنجاح');
-
-            }
-        
-        
-
-    }
 
     public function setting(){
 
