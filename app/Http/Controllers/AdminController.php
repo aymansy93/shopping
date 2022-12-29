@@ -59,9 +59,9 @@ class AdminController extends Controller
         // foreach($request->all() as $key => $value){
         //     echo $key . "<br>";
         //     $type = type_product::where($key);
-        //     dd($request->all());
+            // dd($request->all());
         // }
-        // dd($request->all());
+        // dd(public_path());
         $request->validate([
             'name' =>  ' required|max:255|unique:products',
             'title' => 'required|max:255',
