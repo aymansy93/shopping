@@ -50,9 +50,13 @@
                 <div class="col-lg-4 col-md-6" id="pro">
                     <div class="single-product">
                         <div class="product-img">
+                            @php
+                                $directories = Storage::disk('images_uploads')->url("product/$product->type_products/$product->image_path");
+                                // dd($directories);
+                            @endphp
                             {{-- {{asset('asset/img/product/feature-product/f-p-1.jpg')}} --}}
                             <img class="img-fluid w-100"
-                                src="{{ route('products') . "/storage/product/$product->type_products" . '/' . $product->image_path }}"
+                                src="{{ $directories }}"
                                 alt="{{ $product->image_path }}" />
                             <div class="p_icon">
                                 <a href="/{{ $product->id }}" class="text-decoration-none">
