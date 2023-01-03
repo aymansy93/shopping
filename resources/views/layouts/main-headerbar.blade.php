@@ -48,9 +48,14 @@
                                         <li><a class="dropdown-item btn btn-success" href="{{ route('profil') }}">الملف
                                                 الشخصي</a></li>
                                         <li>
+                                            @if (Auth::check())
                                             <form class="dropdown-item" href="#" action="/logout" method="post">@csrf
                                                 <button class="btn btn-danger" type="submit"> تسجيل الخروج</button>
                                             </form>
+                                            @endif
+                                            @if (!Auth::check())
+                                            <a href="{{route('login')}}" class="btn btn-danger">تسجيل الدخول</a>
+                                            @endif
                                         </li>
                                     </ul>
                                 </div>

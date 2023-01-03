@@ -52,7 +52,8 @@
                         <div class="product-img">
                             @php
                                 $directories = Storage::disk('images_uploads')->url("product/$product->type_products/$product->image_path");
-                                // dd($directories);
+                                // $directories = Storage::disk('images_uploads');
+                                // dd();
                             @endphp
                             {{-- {{asset('asset/img/product/feature-product/f-p-1.jpg')}} --}}
                             <img class="img-fluid w-100"
