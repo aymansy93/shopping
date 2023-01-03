@@ -30,8 +30,8 @@
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->type_products }}</td>
                         <td>
-                            <img src="http://127.0.0.1:8000/storage/product/{{ $product->type_products }}/{{ $product->image_path }}"
-                                width="30px" alt="test">
+                            <img src="{{Storage::disk('images_uploads')->url("product/$product->type_products/$product->image_path")}}"
+                             width="30px" alt="test">
                         </td>
                         <td><a href="/admin/{{ $product->id }}/edit">update</a></td>
                         <td>
