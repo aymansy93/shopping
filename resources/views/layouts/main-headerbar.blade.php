@@ -2,7 +2,9 @@
 
     <div class="main_menu">
         <div class="container">
-
+            <div class="alert alert-primary" role="alert">
+                admin account : a@admin.com | 12345678
+            </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarToggleExternalContent">
                 <div class="container-fluid">
                     <a class="navbar-brand logo_h" href="{{ route('products') }}">
